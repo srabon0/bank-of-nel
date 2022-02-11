@@ -45,6 +45,12 @@ function updateMainBalance(amount,isAdd){
 const depositBtn = document.getElementById('deposit-btn');
 depositBtn.addEventListener('click',function(){
    const depositAmount = getInputValue('deposit-amount');
+   if(depositAmount>0){
+      changeFieldvalue('total-deposit',depositAmount);
+      updateMainBalance(depositAmount,true);
+   }else{
+      alert("Please try a valid number !")
+   }
    // const previousBalance = document.getElementById('total-deposit')
    // const previousBal = parseFloat(previousBalance.innerText);
    // const newBalance = previousBal+depositAmount;
@@ -52,12 +58,12 @@ depositBtn.addEventListener('click',function(){
    // previousBalance.innerText = newBalance;
    // depositAmount.value ='';
    // balance total
-   changeFieldvalue('total-deposit',depositAmount);
+ 
    // const balanceTotal = document.getElementById('balance-total');
    // const balanceNum = parseFloat(balanceTotal.innerText);
    // const updatedBal = balanceNum+depositAmount;
    // balanceTotal.innerText = updatedBal;
-   updateMainBalance(depositAmount,true);
+ 
    
    
 })
@@ -72,7 +78,12 @@ withdrawBtn.addEventListener('click',function(){
    // 
 
    const withdrawAmount = getInputValue('withdraw-amount');
-   updateMainBalance(withdrawAmount,false);
+   if(withdrawAmount>0){
+      updateMainBalance(withdrawAmount,false);
+   }else{
+      alert('Please try a valid Number.')
+   }
+  
 
    
    // if( withdrawAmount>mainBalanceValue ){
